@@ -1,7 +1,5 @@
 # Eliteserien
 
-## Om prosjektet
-
 Eliteserien er en applikasjon som viser Eliteserien tabellen og kamper for hvert lag man trykker på. Kamplisten viser bare kamper registrert 30 dager før og etter dagens dato. Burde bruke startDate og endDate som er tilgjengeligjort i tournamentStage.
 
 Forutsetninger/ begrensninger for løsningen: 
@@ -18,7 +16,7 @@ Prosjektet er satt opp med byggeverktøyet Vite, med en tilhørende React templa
 
 ### Setup
 
-1. Clone the repoet
+1. Clone repoet
 2. Install NPM packages
    ```sh
    npm install
