@@ -13,6 +13,15 @@ export type Team = {
   }[];
 };
 
+export type Tournament = {
+  startDate: string;
+  endDate: string;
+  name: string;
+  standings: {
+    participants: Team[];
+  }[];
+};
+
 export type Match = {
   id: string;
   startDate: string;

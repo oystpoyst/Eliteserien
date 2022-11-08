@@ -6,10 +6,6 @@ import { Team } from "../types";
 import TableRow from "./TableRow";
 import TeamMatches from "./TeamMatches";
 
-type TempTableProps = {
-  teams: Team[];
-};
-
 const TableHeader = () => {
   const { isMobile } = useViewport();
 
@@ -32,7 +28,13 @@ const TableHeader = () => {
   );
 };
 
-const TournamentTable = ({ teams }: TempTableProps) => {
+type TempTableProps = {
+  teams: Team[];
+  startDate: string;
+  endDate: string;
+};
+
+const TournamentTable = ({ teams, startDate, endDate }: TempTableProps) => {
   const { isMobile } = useViewport();
   const [activeParticipantId, setActiveParticipantId] = useState<
     string | undefined
@@ -70,7 +72,11 @@ const TournamentTable = ({ teams }: TempTableProps) => {
         }}
       >
         {activeParticipantId && (
-          <TeamMatches participantId={activeParticipantId} />
+          <TeamMatches
+            startDate={startDate}
+            endDate={endDate}
+            participantId={activeParticipantId}
+          />
         )}
       </Modal>
     </>

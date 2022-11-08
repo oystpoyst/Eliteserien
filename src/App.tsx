@@ -5,7 +5,7 @@ import { useQuery } from "@apollo/client";
 import TournamentTable from "./components/TournamentTable";
 import { Loader } from "@mantine/core";
 import { GET_TEAMS } from "./queries";
-import { Team } from "./types";
+import { Team, Tournament } from "./types";
 
 const tournamentStageId = "4e50ba57-d5fe-4370-b2f8-e357ebeb4c83";
 
@@ -14,13 +14,11 @@ function App() {
     variables: { tournamentStageId },
     pollInterval: 3000,
   });
-  const [teams, setTeams] = useState<Team[]>([]);
-  const [startDate, setStartDate] = useState<Date | undefined>(undefined);
-  const [endDate, setEndDate] = useState<Date | undefined>(undefined);
+  const [tournament, setTournament] = useState<Tournament>();
 
   useEffect(() => {
     if (data) {
-      setTeams(data.tournamentStage.standings[0].participants);
+      setTournament(data.tournamentStage);
     }
   }, [data]);
 
@@ -43,7 +41,13 @@ function App() {
         alt='Eliteserien logo'
         style={{ padding: "20px 0px 50px 0px" }}
       />
-      {teams && <TournamentTable teams={teams} />}
+      {tournament && (
+        <TournamentTable
+          startDate={tournament.startDate}
+          endDate={tournament.endDate}
+          teams={tournament.standings[0].participants}
+        />
+      )}
     </div>
   );
 }

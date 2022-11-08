@@ -17,12 +17,14 @@ const MatchCard = ({ match }: MatchCardProps) => {
     <Card p='lg' radius='md' withBorder>
       <Group grow>
         <Group position='left' style={{ padding: "0px 10px" }}>
-          <img
-            width='30px'
-            height='auto'
-            src={match.participants[0].participant.images[0].url}
-            alt={match.participants[0].participant.name}
-          />
+          {match.participants[0].participant.images.length > 0 && (
+            <img
+              width='30px'
+              height='auto'
+              src={match.participants[0].participant.images[0].url}
+              alt={match.participants[0].participant.name}
+            />
+          )}
           {!isMobile && (
             <p style={{ textAlign: "center" }}>
               {match.participants[0].participant.name}
@@ -73,12 +75,14 @@ const MatchCard = ({ match }: MatchCardProps) => {
               {match.participants[1].participant.name}
             </p>
           )}
-          <img
-            width='30px'
-            height='auto'
-            src={match.participants[1].participant.images[0].url}
-            alt={match.participants[1].participant.name}
-          />
+          {match.participants[1].participant.images.length > 0 && (
+            <img
+              width='30px'
+              height='auto'
+              src={match.participants[1].participant.images[0].url}
+              alt={match.participants[1].participant.name}
+            />
+          )}
         </Group>
       </Group>
     </Card>
@@ -87,14 +91,20 @@ const MatchCard = ({ match }: MatchCardProps) => {
 
 type TeamMatchesProps = {
   participantId: string;
+  startDate: string;
+  endDate: string;
 };
 
-const TeamMatches = ({ participantId }: TeamMatchesProps) => {
+const TeamMatches = ({
+  participantId,
+  startDate,
+  endDate,
+}: TeamMatchesProps) => {
   const { loading, error, data } = useQuery(GET_MATCHES, {
     variables: {
       participantId,
-      fromDate: dayjs().subtract(30, "day").format("YYYY-MM-DD"),
-      toDate: dayjs().add(30, "day").format("YYYY-MM-DD"),
+      fromDate: dayjs(startDate).format("YYYY-MM-DD"),
+      toDate: dayjs(endDate).format("YYYY-MM-DD"),
     },
   });
 
