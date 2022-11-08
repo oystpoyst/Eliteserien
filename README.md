@@ -10,7 +10,7 @@ Forutsetninger/ begrensninger for løsningen:
 
 ### Bygget med
 
-Prosjektet er satt opp med byggeverktøyet Vite, med en tilhørende React template. Apollo Client for å kjøre graphQL queries, mantine for ferdige React komponenter og styled-components for custom html komponenter. dayjs er brukt for dato håndtering.
+Prosjektet er satt opp med byggeverktøyet Vite, med en tilhørende React / typescript start template. Apollo Client for å kjøre graphQL queries, mantine for ferdige React komponenter og styled-components for custom html komponenter. dayjs er brukt for dato håndtering.
 
 ### Setup
 
